@@ -1,0 +1,132 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{spreadtab}
+\usepackage{siunitx}
+\usepackage{titling}
+
+\setlength{\droptitle}{-10em}
+
+\begin{document}
+
+\title{Antwort für Übungsblatt 1}
+\author{
+  Jian Dong\\
+  \texttt{jd81vuti}
+  \and
+  Zezhi Chen\\
+  \texttt{zc75diqa}
+  \and
+  Hanyu Sun\\
+  \texttt{hs54keri}
+}
+\date{\today}
+\maketitle
+
+\section{P1 (Gruppendiskussion)}
+\textbf{(a) Algorithmus} \\
+Ein Algorithmus ist eine endliche Sequenz von Handlungsvorschriften, die eine Eingabe in eine Ausgabe transformiert. \\
+\\
+\textbf{(b) Schleifeninvariante} \\
+Schleifeninvariante ist die explizite Aussage über den Schleifendurchlauf, die am Anfang und Ende jedes Schleifendurchlaufs und auch vor und nach der Schleife wahr ist. \\
+\\
+\textbf{(c) Totale Ordnung} \\
+Sei eine nicht leere Menge M und eine binänre Relation R auf gegeben, und sie erfüllen die Flogende Eigenschaften:\\
+Reflexivität: $\forall$x $\in$ M: x $\leq$ x\\
+Transivität: $\forall$x,y,z $\in$ M: x $\leq$ y $\wedge$ y $\leq$ z $\Rightarrow$ x $\leq$ z\\
+Antisymmetrie: $\forall$x,y $\in$ M: x $\leq$ y $\wedge$ y $\leq$ x $\Rightarrow$ x = y\\
+Totalität: $\forall$x $\in$ M: x $\leq$ x $\vee$ y $\leq$ x\\
+Das heißt, bei irgenden zwei Elementen x,y in Menge M bestehen eine Reation (x R y oder y R x). 
+
+\section{P2 (Insertion Sort)}
+\textbf{(a)} \\
+\begin{lstlisting}
+FOR j = 1 to A.length - 1
+  key = A[j]
+  i = j - 1
+  WHILE I >= 0 and A[i] < key
+    A[i+1] = A[i]
+    i = i - 1
+  A[i+1] = key
+\end{lstlisting}
+\vspace*{1\baselineskip}
+\textbf{(b)} \\
+\textbf{input : [“auf”,“Baum”,“Daten”,“Haus”,“sortieren”]}\\
+j = 1, key = "Baum", : [“auf”,“auf”,“Daten”,“Haus”,“sortieren”]\\
+j = 1, key = "Baum", : [“Baum”,“auf”,“Daten”,“Haus”,“sortieren”]\\
+j = 2, key = "Daten" : [“Baum”,“auf”,“auf”,“Haus”,“sortieren”]\\
+j = 2, key = "Daten", : [“Baum”,“Baum”,“auf”,“Haus”,“sortieren”]\\
+j = 2, key = "Daten", : [“Daten“,“Baum”,“auf”,“Haus”,“sortieren”]\\
+j = 3, key = "Haus", : [“Daten”,“Baum”,“auf”,“auf”,“sortieren”]\\
+j = 3, key = "Haus", : [“Daten”,“Baum”,“Haus“,“auf”,“sortieren”]\\
+j = 4, key = "sortieren", : [“Daten”,“Baum”,“Haus“,“auf”,“auf”]\\
+j = 4, key = "sortieren", : [“Daten”,“Baum”,“Haus“,“Haus”,“auf”]\\
+j = 4, key = "sortieren", : [“Daten”,“Baum”,“Baum“,“Haus”,“auf”]\\
+j = 4, key = "sortieren", : [“Daten”,“Daten”,“Baum“,“Haus”,“auf”]\\
+j = 4, key = "sortieren", : [“sortieren”,“Daten”,“Baum“,“Haus”,“auf”]\\
+\textbf{output : [“sortieren”,“Daten”,“Baum“,“Haus”,“auf”]}
+
+\section{P3 (Eigenschaften von Algorithmen)}
+\textbf{Algorithmus1:} \\
+Sortierung der Elemente einer Liste in absteigender Reihenfolge \\
+% 首先判断Array是否为降序，若不为降序，则随机交换Array中两个树值的位置，直到生成降序的Array
+Erfüllte Eigenschaften: \\
+Determiniertheit,  Korrektheit\\
+\textbf{Algorithmus2:} \\
+Output ist eine Aussage, ob die eingegebene Zahl n Primzahl ist. \\
+% 判断当前n是否为质数并返回布尔值
+Erfüllte Eigenschaften: \\
+Determiniertheit, Determinismus, Terminierung, Korrektheit,
+
+\section{P4 (Laufzeiten)}
+\begin{adjustbox}{max width=\textwidth}
+\begin{spreadtab}{{tabular}{r|llllll}}
+& @sqrt(n) & @n & @$n\,log_2(n)$ & @$n^2$ & @$n^3$ & @$2^n$ \\
+\hline
+@1 Sekunde     & @1000.000                        & @1000            & @140           & @31     & @10    & @6  \\
+@1 Stunde      & @360.000.000                     & @60.000          & @4895          & @244    & @39    & @11 \\
+@1 Tag         & @207.360.000.000                 & @3.600.000       & @204.094       & @1897   & @153   & @15 \\
+@1 Monat       & @186.624.000.000.000             & @108.000.000     & @4.861.992     & @10392  & @476   & @18 \\
+@1 Jahr        & @24.862.980.000.000.000.000      & @1.314.000.000   & @51.302.995    & @36249  & @1.095 & @18 \\
+@1 Jahrhundert & @248.629.800.000.000.000.000.000 & @131.400.000.000 & @4.114.224.723 & @362491 & @5.083 & @25
+\end{spreadtab}
+\end{adjustbox}
+
+\section{P5 (Türme von Hanoi)}
+\textbf{(a)}\\
+Es gibt n Scheiben auf dem Stab A , und das Ziel ist Versetzen dieser Scheiben auf den Stab C \\
+Das Algorithmus ist wie folgend: \\
+\lstset{language=java,caption={Java Code},label=DescriptiveLabel}
+\begin{lstlisting}
+import java.util.Scanner;
+public class Honio {
+  public static void move(int n,char A,char B,char C){
+  // obere n Scheiben von dem Stab A auf dem Stab C versetzen 
+    if(n==1){
+      System.out.println(A+"->"+C);
+    }
+    else{
+      move(n-1,A,C,B);
+      move(1,A,B,C);
+      move(n-1,B,A,C);
+    }
+  }
+  public static void main(String[] args){
+    	int Schieben;
+    	Scanner in = new Scanner(System.in);
+    	System.out.println("Wie viel Schieben:");
+    	Schieben = in.nextInt();
+    	Honio.move(Schieben,'A','B','C');
+  }
+}
+\end{lstlisting}
+\textbf{(b)}\\
+$f(n) =  (2^n - 1) * 1$ \\
+$f(n = 64) = 2^{64} - 1 = \num{1.844674e19} s = \num{5.849423e11} Jahre $ \\
+Aussage: Es dauert \num{5.849423e11} Jahre. \\
+\textbf{($c^*$)}\\
+Logisch gesehen ist unser Algorithmus optimal. Und der Zeitaufwand aus (b) ist ganz groß, dass wir keine Sorge für den Weltuntergang brauchen.
+
+\end{document}

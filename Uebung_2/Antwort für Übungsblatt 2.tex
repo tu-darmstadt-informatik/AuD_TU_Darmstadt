@@ -5,7 +5,9 @@
 \usepackage{adjustbox}
 \usepackage{spreadtab}
 \usepackage{siunitx}
+\usepackage{amssymb}
 \usepackage{titling}
+\usepackage{leftidx}
 
 \setlength{\droptitle}{-10em}
 
@@ -26,18 +28,92 @@
 \maketitle
 
 \section{P1 (Gruppendiskussion)}
-pass
-
+\textbf{(a) Asymptotische Notation(O,o,$\Omega,\omega,\Theta$)} \\
+$O(g)=\lbrace f:\exists c\in\mathbb{R}_{>0},n_{0}\in\mathbb{N},\forall n\ge n_{0},0\le f(n)\le cg(n) \rbrace$\\
+$o(g)=\lbrace f:\forall c\in\mathbb{R}_{>0},\exists n_{0}\in\mathbb{N},\forall n\ge n_{0},0\le f(n)<cg(n) \rbrace$\\
+$O(g)$ bedeutet, dass die Ordung von $g(n)$ gleich oder grosser als $f(n)$ sein muss,aber $o(g)$ bedeutet, dass die Ordnung von $g(n)$ grosser als $f(n)$ sein muss.\\
+\\
+$\Omega(g)=\lbrace f:\exists c\in\mathbb{R}_{>0},n_{0}\in\mathbb{N},\forall n\ge n_{0},0\le cg(n)\le f(n) \rbrace$\\
+$\omega(g)=\lbrace f:\forall c\in\mathbb{R}_{>0},\exists n_{0}\in\mathbb{N},\forall n\ge n_{0},0\le cg(n)<f(n) \rbrace$\\
+$\Omega(g)$ bedeutet, dass die Ordung von $g(n)$ gleich oder kleiner als $f(n)$ sein muss,aber $\omega(g)$ bedeutet, dass die Ordnung von $g(n)$ kleiner als $f(n)$ sein muss.\\
+\\
+$\Theta(g)=\lbrace f:\exists c_{1},c_{1}\in\mathbb{R}_{>0},n_{0}\in\mathbb{N},\forall n\ge n_{0},0\le c_{1}g(n)\le f(n) \le c_{2}g(n) \rbrace$\\
+$\Theta(g)$ bedeutet, dass $g(n)$ und $f(n)$ in gleiche Ordnung sind.~\\~\\
+\textbf{(b) Divide-and-Conquer Ansatz}\\
+Zerlege das Probleme in mehrere Teilprobleme, die loeserbar sind.~\\~\\
+\textbf{(c) Bubblesort,Mergesort,Quicksort}\\
+Bubblesort: 
+1.Vergleiche Paare von benachbarten Schluesselwerten.\\
+2.Tausche das Paare, falls rechter Schluesselwert kleiner ist als linker.\\
+\\
+Mergesort:
+1.Rekusiv teilt die Folge in n Elementen in zwei Teilfolgen von je n/2 Elementen auf bis jede Teilfolgen nach Reihenolge anordnende sind.\\
+2.Die zwei sortierten Teilfolgen,die am Endstuecke liegen, mischen, um die sortierte Loesung zu erzeugen.\\
+\\
+Quicksort:
+1.Zerlege den Array A[p..r] in zwei Teilarrays A[p..q-1] und A[q+1..r], sodass jedes Element von A[p..q-1] kleiner oder gleich A[q] ist(die Zahlenwert von A[q] ist die Zahlenwert von A[r] in originale Array), welches wiederum kleiner oder gleich jedem Element von A[q+x..r] ist. Berechnen den Index q als teil vom Partion Algorithmus.\\
+2.Sortieren beider Teilarrays A[p..q-1] und A[q+1..r] durch rekursiven Aufruf von Quicksort.
 \section{P2 (Rechenregeln für asymptotische Notation)}
-pass
+\textbf{(a) i) f(n)=O(g(n)) genau dann wenn $g(n)=\Omega(f(n))$}\\
+$f(n)=O(g(n))\Leftrightarrow$ Die Ordnung von f(n) gleich oder kleiner als g(n)$\Leftrightarrow$Die Ordnung von g(n) gleich oder grosser als f(n)$\Leftrightarrow g(n)=\Omega(f(n))$\\
+\textbf{(a) ii) f(n)=o(g(n)) genau dann wenn $g(n)=\omega(f(n))$}\\
+$f(n)=o(g(n))\Leftrightarrow$ Die Ordnung von f(n) kleiner als g(n)$\Leftrightarrow$Die Ordnung von g(n) grosser als f(n)$\Leftrightarrow g(n)=\omega(f(n))$\\
+\\
+\textbf{(b) $o(g(n))\subseteq O(g(n))$,und $\omega(g(n))\subseteq\Omega(g(n))$}\\
+$o(g(n))+\Theta(g(n))=O(g(n))\Rightarrow o(g(n))\subseteq O(g(n))$\\
+$\omega(g(n))+\Theta(g(n))=\Omega(g(n))\Rightarrow \omega(g(n))\subseteq \Omega(g(n))$\\
+\\
+\textbf{(c) $O(g(n))\cap\Omega(g(n))=\Theta(g(n))$, und $o(g(n))\cap\Omega(g(n))=\varnothing$}\\
+$O(g(n))\cap\Omega(g(n))$ bedeutet, dass die beide Funktion in gleich Ordnung sind $\Leftrightarrow \Theta(g(n))$\\
+$o(g(n))\cap\Omega(g(n))$ bedeutet, waehrend die Ordnung von f(n) kleiner als g(n) ist, muss die Ordnung von f(n) grosser als g(n) ist.$\Leftrightarrow \varnothing$\\
+\\
+\textbf{(d) i) ist$f_{1}(n)=O(g_{1}(n))$ und $f_{2}(n)=O(g_{2}(n))$, dann gilt $f_{1}(n)+f_{2}(n)=O(mas(g_{1}(n),g_{2}(n)))$}\\
+Denn die Ordnung von$f_{1}(n)+f_{2}(n)$ haengt von die groesste Ordnung von $f_{1}$ und $f_{2}$ ab. und die groesste Ordnung von $f_{1}$ und $f_{2}$ gleich oder kleiner als $O(mas(g_{1}(n)*g_{2}(n)))$ ist, d.h.$f_{1}(n)+f_{2}(n)=O(mas(g_{1}(n),g_{2}(n)))$\\
+\textbf{(d) ii) ist$f_{1}(n)=O(g_{1}(n))$ und $f_{2}(n)=O(g_{2}(n))$, dann gilt $f_{1}(n)*f_{2}(n)=O(g_{1}(n)*g_{2}(n))$}\\
+Nehmen wir an,dass die Ordnung von$f_{1}(n),f_{2}(n),g_{1}(n),g_{2}(n)$ ist $j,k,l,m(j\le l,k\le m).$ Die Ordnung von $f_{1}(n)*f_{2}(n)$ ist $j*k.$ Die Ordnung von $g_{1}(n)*g_{2}(n)$ ist $l*m$.Denn $j\le l,k\le m$ und $j,k,l,m >0$, so $j*k\le l*m$, d.h.$f_{1}(n)*f_{2}(n)=O(g_{1}(n)*g_{2}(n))$\\
+\textbf{(d) iii) Es gilt $f(n)=O(f(n))$}\\
+$f(n)$ und $f(n)$ ist in gleiche Ordnung,d.h.$\exists c_{1},c_{1}\in\mathbb{R}_{>0},n_{0}\in\mathbb{N},\forall n\ge n_{0},0\le c_{1}f(n)\le f(n) \le c_{2}f(n) \rbrace$. Dann$f(n)=\Theta(f(n))\in O(f(n))\Rightarrow f(n)=O(f(n))$\\
+\textbf{(d) iv) Ist $f(n)=O(g(n))$ und $g(n)=O(h(n))$, dann gilt $f(n)=O(h(n))$.}\\
+$f(n)=O(g(n))\Leftrightarrow$ die Ordnung von f(n) gleich oder kleiner als g(n).$g(n)=O(h(n))\Leftrightarrow$ die Ordnung von g(n) gleich oder keliner als h(n),d.h. Die Ordnung von f(n) gleich oder kleiner als h(n)$\Leftrightarrow f(n)=O(h(n))$
 
 \section{P3 (Rechnen mit asymptotischer Notation)}
-pass
-
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c|c}
+f(n)&g(n)&O&o&$\Omega$&$\omega$&$\Theta$\\
+\hline  
+$log^{k}(n)$&$n^{\varepsilon}$&x&x&&&\\
+\hline
+$n^{k}$&$c^{n}$&x&x&&&\\
+\hline
+$2^{n}$&$2^{n/2}$&&&x&x&\\
+\hline
+$n^{log(c)}$&$c^{log(n)}$&x&&x&&x\\
+\hline
+$n^{r}$&$n^{s}$&x&x&&&\\
+\hline
+$log(n!)$&$log(n^{n})$&x&x&&&\\
+\end{tabular}\\
+\end{center}
+1.$\lim\limits_{n \to \infty} \frac{log_{n}(log^{k}(n))}{log_{n}(n^{\varepsilon})}=\frac{k log_{n}(log(n))}{\varepsilon}=\frac{klog(log(n))}{\varepsilon log(n)}=0$ d.h. die Ordnung von f(n) kleiner als g(n).\\
+2.$\lim\limits_{n \to \infty} \frac{log(n^{k})}{log(c^{n})}=\frac{k log(n)}{n log(c)}=0$ d.h. die Ordnung von f(n) kleiner als g(n).\\
+3.$\lim\limits_{n \to \infty} \frac{2^{n}}{2^{n/2}}=2^{n/2}=+\infty$ d.h. die Ordnung von f(n) grosser als g(n).\\
+4.$\lim\limits_{n \to \infty} \frac{log(n^{log(c)})}{log(c^{log(n)})}=\frac{log(c)log(n)}{log(n)log(c)}=1$ d.h. im gleichen Ordnung.\\
+5.$\lim\limits_{n \to \infty} \frac{n^{r}}{n^{s}}=n^{r-s}=0$ d.h. die Ordnung von f(n) kleiner als g(n).\\
+6.$\lim\limits_{n \to \infty} (log(n!)-log(n^{n}))=log(\frac{n!}{n^{n}})<log(1/n)=-\infty$ d.h. die Ordnung von f(n) kleiner als g(n).
 \section{P4 (Darstellung von Merge Sort)}
-pass
+\begin{center}
+$[14, 9, 5, 8, 11, 4, 21, 7, 6]$\\
+$[9, 14, 5, 8, 11, 4, 21, 7, 6]$\\
+$[5, 9, 14, 8, 11, 4, 21, 7, 6]$\\
+$[5, 9, 14, 8, 11, 4, 21, 7, 6]$\\
+$[5, 8, 9, 11, 14, 4, 21, 7, 6]$\\
+$[5, 8, 9, 11, 14, 4, 21, 7, 6]$\\
+$[5, 8, 9, 11, 14, 4, 21, 6, 7]$\\
+$[5, 8, 9, 11, 14, 4, 6, 7, 21]$\\
+$[4, 5, 6, 7, 8, 9, 11, 14, 21]$\\
+\end{center}
 
 \section{P5 (Bubble Sort)}
 pass
 
-\end{document}
+\end{document}log(n^{n})

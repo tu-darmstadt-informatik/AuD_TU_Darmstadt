@@ -6,8 +6,9 @@
 \usepackage{spreadtab}
 \usepackage{siunitx}
 \usepackage{titling}
+\usepackage{forest}
 
-\setlength{\droptitle}{-10em}
+\setlength{\droptitle}{-12em}
 
 \begin{document}
 
@@ -26,18 +27,86 @@
 \maketitle
 
 \section{P1 (Gruppendiskussion)}
-pass
+(a) Asymptotische Notation \\
+$O$ \\
+$o$ \\
+$\Theta$ \\
+$\Theta(g)$ = {f: }\\
+$\Omega$ \\
+$\omega$\\
+(b) Divide-and-Computer Ansatz \\
+\\
+(c) Bubblesort, Mergesort, Quicksort
 
 \section{P2 (Rechenregeln für asymptotische Notation)}
-pass
+(a)\\
+(i)\\
+(ii)\\
+\\
+(b)\\
+\\
+(c)\\
+\\
+(d)\\
+(i)\\
+(ii)\\
+(iii)\\
+(iv\\
 
 \section{P3 (Rechnen mit asymptotischer Notation)}
-pass
+
+\begin{adjustbox}{max width=\textwidth}
+\begin{spreadtab}{{tabular}{c|c|lllll}}
+@f(n) & @sqrt(n) & @n & @$n\,log_2(n)$ & @$n^2$ & @$n^3$ & @$2^n$ \\
+\hline
+@1 Sekunde     & @1 Sekunde     &      &    &    &   &      \\
+@1 Sekunde     & @1 Stunde      &      &    &    &   &      \\
+@1 Sekunde     & @1 Tag         &      &    &    &   &      \\
+@1 Sekunde     & @1 Monat       &      &    &    &   &      \\
+@1 Sekunde     & @1 Jahr        &      &    &    &   &      \\
+@1 Sekunde     & @1 Jahrhundert &      &    &    &   &  
+\end{spreadtab}
+\end{adjustbox}
 
 \section{P4 (Darstellung von Merge Sort)}
-pass
+%(14, 9, 5, 8, 11, 4, 21, 7, 6)
+%\\
+%(14, 9, 5, 8, 11, 4, 21, 7, 6)\\
+
+\begin{adjustbox}{max width=\textwidth}
+\forestset{
+  sn edges/.style={for tree={parent anchor=south, child anchor=north,align=center,edge={->},base=bottom,where n children=0{tier=word}{}}}, 
+  background tree/.style={for tree={text opacity=0.2,draw opacity=0.2,edge={draw opacity=0.2}}}
+}
+\begin{forest}
+  sn edges
+  [{(14, 9, 5, 8, 11, 4, 21, 7, 6)}, align=center, name=SS
+       [{(14, 9, 5, 8)}, name=PDC
+         [{(14, 9)}, name=MS]
+         [{(5, 8)}]
+       ]
+       [{(11, 4, 21, 7, 6)}
+         [{(11, 4)}]
+         [{(21, 7, 6)}
+          [{(21)}]
+          [{(7, 6)}]
+         ]
+       ]
+  ]
+  \node[anchor=west,align=left] 
+       at ([xshift=-6cm]MS.west) {Level 3};
+  \node[anchor=west,align=left] 
+       at ([xshift=-6cm]MS.west|-PDC) {Level 2};
+  \node[anchor=west,align=left] 
+       at ([xshift=-6cm]MS.west|-SS) {Level 1};
+\end{forest}
+\end{adjustbox}
 
 \section{P5 (Bubble Sort)}
-pass
+
+(a)\\
+initialization, Fortsetzung\\
+(b)\\
+
 
 \end{document}

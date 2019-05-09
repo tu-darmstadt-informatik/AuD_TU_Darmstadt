@@ -6,7 +6,9 @@ import java.util.Random;
 /**
  * Aufgabe H1b)
  * 
- * Abgabe von: <name>, <name> und <name>
+ * Abgabe von: Jian Dong jd81vuti
+ *             Zezhi Chen zc75diqa
+ *             Hanyu Sun hs54keri
  */
 
 import frame.SortArray;
@@ -22,13 +24,12 @@ public class HybridSort {
 	 */
 	public void sort(SortArray array, int k) { 
 		assert(k>=0);
-		// TODO: Implement dj
 		int p = 0;
 		int r = array.getNumberOfItems() - 1;
 		hySort(array, k, p, r);
 	}
 
-	public void hySort(SortArray array,int k, int p, int r) { //dj
+	public void hySort(SortArray array,int k, int p, int r) { 
 		int q = 0;
 		if (r > p) {
 		    if ( r - p +1  >= k) { 
@@ -42,7 +43,7 @@ public class HybridSort {
 		}
 	}
 	
-	public int partion(SortArray array, int p, int r) { //dj
+	public int partion(SortArray array, int p, int r) { 
 		int pivot = randomPivot(p, r);
 		cardSwap(array, p, pivot);
 		Card x = new Card(array.getElementAt(p)); // Pivotelement
@@ -56,20 +57,6 @@ public class HybridSort {
 		cardSwap(array, i, p);
 		return i;
 		
-		/*
-		int pivot = randomPivot(p, r);
-		cardSwap(array, r, pivot);
-		Card x = new Card(array.getElementAt(r)); // Pivotelement
-		int i = p-1;
-		for (int j = p ; j < r ; j++) {
-			if (array.getElementAt(j).compareTo(x) <= 0 ) {
-				i = i + 1;
-				cardSwap(array, i, j);
-			}
-		}
-		cardSwap(array, i+1, r);
-		return i+1;
-		*/
 	}
 	
 	public int randomPivot(int p, int r) {//gamz richtig $dj$
@@ -82,7 +69,7 @@ public class HybridSort {
 		array.setElementAt(j, tmp);
 	}
 	
-	//below are methods for insertionSort $dj$
+	//below are methods for insertionSort 
 	public void insertionSort(SortArray array, int p, int r) {
 		int i;
 		for (int j = p+1; j<= r; j++) {
@@ -96,7 +83,7 @@ public class HybridSort {
 		}
 	}
 	
-	//below are methods for mergeSort $dj$
+	//below are methods for mergeSort 
 	/*
 	public void mergeSort(SortArray array, int p, int r) { //dj
 		int q;

@@ -3,7 +3,9 @@ package lab;
 /**
  * Aufgabe H1
  * 
- * Abgabe von: <name>, <name> und <name>
+ * Abgabe von: Jian Dong jd81vuti
+ *             Zezhi Chen zc75diqa
+ *             Hanyu Sun hs54keri
  */
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,8 +16,8 @@ import org.junit.jupiter.api.Test;
  * Use this class to implement your own tests.
  */
 
-import frame.SortArray; //dj
-import frame.CardTestfileReader; //dj
+//import frame.SortArray; //
+//import frame.CardTestfileReader; //
 
 class YourTests {
 

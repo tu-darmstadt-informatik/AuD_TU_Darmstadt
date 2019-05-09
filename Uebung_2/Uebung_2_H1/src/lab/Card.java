@@ -3,7 +3,9 @@ package lab;
 /**
  * Aufgabe H1b)
  * 
- * Abgabe von: <name>, <name> und <name>
+ * Abgabe von: Jian Dong jd81vuti
+ *             Zezhi Chen zc75diqa
+ *             Hanyu Sun hs54keri
  */
 
 public class Card {
@@ -43,8 +45,7 @@ public class Card {
 	 * @param other The object we compare this to.
 	 * @return -1, 0 or 1
 	 */
-	public int compareTo(Card other) { //by dj, ganz richtig! :)
-		// TODO: implement
+	public int compareTo(Card other) { 
 		if (this.value > other.value) {
 			return 1;
 		}
@@ -82,7 +83,7 @@ public class Card {
 					return -1;
 				}
 			}
-			else {//this.suit.ordinal() == 1
+			else {
 				if (other.suit.ordinal() == 1) {
 					return 0;
 				}
